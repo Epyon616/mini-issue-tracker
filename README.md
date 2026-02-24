@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧾 Mini Issue Tracker
 
-## Getting Started
+A minimal issue tracker built with **Next.js App Router**, demonstrating:
 
-First, run the development server:
+- ✅ React Server Components (RSC)
+- ✅ Server Actions
+- ✅ Server state vs Client UI state
+- ✅ URL-based state (search params)
+- ✅ Revalidation & cache invalidation patterns
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+No Prisma. No heavy database setup.  
+Server state is persisted via a file-backed JSON store for simplicity.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js (App Router)**
+- **React Server Components**
+- **Server Actions**
+- **lowdb (JSON file persistence)**
+- **Zod (validation)**
+- **nanoid (IDs)**
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🧠 Architecture Overview
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 1️⃣ React Server Components (RSC)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The following are Server Components:
 
-## Deploy on Vercel
+- `/issues` – Issues list page  
+- `/issues/[id]` – Issue detail page  
+- `CommentThread` – Comment rendering  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+These components:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Fetch data directly from the server datastore
+- Do not ship JavaScript to the client
+- Re-render after server mutations via `revalidatePath`
+
+This keeps the JS bundle minimal and improves performance.
+
+---
+
+### 2️⃣ Client Components (Interactive Islands)
+
+Only interactive UI lives on the client:
+
+- `NewIssueForm`
+- `CommentComposer`
+- `StatusToggle`
+
+These components:
+
+- Use `useState` and `useTransition`
+- Call server actions
+- Handle pending state and validation errors
+- Provide optimistic UI (clears comment input immediately)
+
+This keeps client JS small and intentional.
+
+---
+
+### 3️⃣ Server State
+
+Server state includes:
+
+- Issues
+- Comments
+- Issue status
+
+Data is stored in:
