@@ -14,10 +14,7 @@ export async function listIssues(params: { status?: IssueStatus; q?: string } = 
 
 export async function getIssue(id: string) {
   const db = await getDb();
-  return db.data.issues.find((i) => {
-    console.log(i.id, id);
-    return i.id === id
-  }) ?? null;
+  return db.data.issues.find((i) => i.id === id) ?? null;
 }
 
 export async function getComments(issueId: string) {

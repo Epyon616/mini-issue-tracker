@@ -1,5 +1,6 @@
 // src/lib/db.ts
-import { JSONFilePreset } from "lowdb/node";
+import { Low } from "lowdb";
+import { JSONFile } from "lowdb/node";
 import path from "path";
 import fs from "fs/promises";
 
@@ -26,8 +27,11 @@ type Data = {
   comments: Comment[];
 };
 
-// File location (outside src so it’s clearly “data”)
-const dbFile = path.join(process.cwd(), "data", "db.json");
+// File location (outside src so it's clearly "data")
+const dbFile =
+  process.env.NODE_ENV === "test"
+    ? path.join(process.cwd(), "data", "db.test.json")
+    : path.join(process.cwd(), "data", "db.json");
 
 async function ensureDbFile() {
   try {
@@ -38,9 +42,11 @@ async function ensureDbFile() {
   }
 }
 
-// Singleton-ish DB loader
+// DB loader - always reads fresh from file
 export async function getDb() {
   await ensureDbFile();
-  // JSONFilePreset loads + writes automatically with db.write()
-  return JSONFilePreset<Data>(dbFile, { issues: [], comments: [] });
+  const adapter = new JSONFile<Data>(dbFile);
+  const db = new Low<Data>(adapter, { issues: [], comments: [] });
+  await db.read();
+  return db;
 }
