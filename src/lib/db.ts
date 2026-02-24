@@ -38,7 +38,11 @@ async function ensureDbFile() {
     await fs.access(dbFile);
   } catch {
     await fs.mkdir(path.dirname(dbFile), { recursive: true });
-    await fs.writeFile(dbFile, JSON.stringify({ issues: [], comments: [] }, null, 2), "utf-8");
+    await fs.writeFile(
+      dbFile,
+      JSON.stringify({ issues: [], comments: [] }, null, 2),
+      "utf-8",
+    );
   }
 }
 

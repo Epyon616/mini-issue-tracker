@@ -40,7 +40,10 @@ export async function addCommentAction(issueId: string, formData: FormData) {
   return { ok: true as const };
 }
 
-export async function setStatusAction(issueId: string, status: "OPEN" | "CLOSED") {
+export async function setStatusAction(
+  issueId: string,
+  status: "OPEN" | "CLOSED",
+) {
   await setIssueStatus(issueId, status);
   revalidatePath("/issues");
   revalidatePath(`/issues/${issueId}`);

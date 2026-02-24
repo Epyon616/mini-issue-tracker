@@ -2,13 +2,17 @@
 import { nanoid } from "nanoid";
 import { getDb, IssueStatus } from "./db";
 
-export async function listIssues(params: { status?: IssueStatus; q?: string } = {}) {
+export async function listIssues(
+  params: { status?: IssueStatus; q?: string } = {},
+) {
   const db = await getDb();
   const q = params.q?.toLowerCase().trim();
 
   return db.data.issues
     .filter((i) => (params.status ? i.status === params.status : true))
-    .filter((i) => (q ? (i.title + " " + i.body).toLowerCase().includes(q) : true))
+    .filter((i) =>
+      q ? (i.title + " " + i.body).toLowerCase().includes(q) : true,
+    )
     .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
 }
 

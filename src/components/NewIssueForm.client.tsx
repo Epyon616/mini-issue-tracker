@@ -5,7 +5,10 @@ import { createIssueAction } from "@/actions/issues";
 
 export default function NewIssueForm() {
   const [isPending, startTransition] = useTransition();
-  const [errors, setErrors] = useState<{ title?: string[]; body?: string[] } | null>(null);
+  const [errors, setErrors] = useState<{
+    title?: string[];
+    body?: string[];
+  } | null>(null);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -25,20 +28,30 @@ export default function NewIssueForm() {
       <div className="stack" style={{ gap: 8 }}>
         <label className="subtle">Title</label>
         <input className="input" name="title" placeholder="Short summary…" />
-        {errors?.title?.length ? <div className="error">{errors.title.join(", ")}</div> : null}
+        {errors?.title?.length ? (
+          <div className="error">{errors.title.join(", ")}</div>
+        ) : null}
       </div>
 
       <div className="stack" style={{ gap: 8 }}>
         <label className="subtle">Body</label>
-        <textarea className="textarea" name="body" placeholder="Describe the issue…" />
-        {errors?.body?.length ? <div className="error">{errors.body.join(", ")}</div> : null}
+        <textarea
+          className="textarea"
+          name="body"
+          placeholder="Describe the issue…"
+        />
+        {errors?.body?.length ? (
+          <div className="error">{errors.body.join(", ")}</div>
+        ) : null}
       </div>
 
       <div className="row" style={{ justifyContent: "space-between" }}>
         <button className="btn primary" type="submit" disabled={isPending}>
           {isPending ? "Creating…" : "Create issue"}
         </button>
-        <span className="subtle">Client state: inputs + pending + inline errors</span>
+        <span className="subtle">
+          Client state: inputs + pending + inline errors
+        </span>
       </div>
     </form>
   );

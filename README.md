@@ -16,9 +16,9 @@ The focus of this project is architectural clarity rather than feature breadth.
 
 ### Server Components (Default)
 
-- `/issues` — issue list  
-- `/issues/[id]` — issue detail  
-- `CommentThread` — comment rendering  
+- `/issues` — issue list
+- `/issues/[id]` — issue detail
+- `CommentThread` — comment rendering
 
 These components:
 
@@ -98,9 +98,9 @@ This provides:
 
 All mutations:
 
-1. Update canonical server state  
-2. Trigger `revalidatePath`  
-3. Allow RSC to re-fetch and re-render  
+1. Update canonical server state
+2. Trigger `revalidatePath`
+3. Allow RSC to re-fetch and re-render
 
 No client-side cache synchronization is required.
 
@@ -170,8 +170,7 @@ The datastore is intentionally simple to keep the focus on rendering boundaries 
 - Use URL state instead of local state where appropriate
 - Keep client state ephemeral and interaction-focused
 
-This project is intentionally small but reflects production-oriented patterns for building scalable, server-first React applications using the App Router.
----
+## This project is intentionally small but reflects production-oriented patterns for building scalable, server-first React applications using the App Router.
 
 ## Testing
 

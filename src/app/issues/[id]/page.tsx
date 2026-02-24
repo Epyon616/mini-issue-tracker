@@ -6,14 +6,13 @@ import CommentComposer from "@/components/CommentComposer.client";
 import StatusToggle from "@/components/StatusToggle.client";
 import IssueNotFound from "@/components/IssueNotFound";
 
-type IssuePageProps = { params: Promise<{ id: string }>};
+type IssuePageProps = { params: Promise<{ id: string }> };
 
 export default async function IssuePage({ params }: IssuePageProps) {
   const { id } = await params;
   const issue = await getIssue(id);
 
-
-  if (!issue) return <IssueNotFound />
+  if (!issue) return <IssueNotFound />;
 
   return (
     <main className="stack" style={{ marginTop: 18 }}>
@@ -23,7 +22,9 @@ export default async function IssuePage({ params }: IssuePageProps) {
             <Link href="/issues" className="subtle">
               ← Issues
             </Link>
-            <span className={`badge ${issue.status === "OPEN" ? "open" : "closed"}`}>
+            <span
+              className={`badge ${issue.status === "OPEN" ? "open" : "closed"}`}
+            >
               {issue.status}
             </span>
           </div>
@@ -42,7 +43,9 @@ export default async function IssuePage({ params }: IssuePageProps) {
       </header>
 
       <section className="panel">
-        <p style={{ margin: 0, whiteSpace: "pre-wrap", lineHeight: 1.5 }}>{issue.body}</p>
+        <p style={{ margin: 0, whiteSpace: "pre-wrap", lineHeight: 1.5 }}>
+          {issue.body}
+        </p>
       </section>
 
       <section className="panel stack">

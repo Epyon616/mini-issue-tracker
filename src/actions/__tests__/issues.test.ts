@@ -20,7 +20,11 @@ vi.mock("@/lib/issuesRepo", () => ({
   setIssueStatus: vi.fn(),
 }));
 
-import { createIssueAction, addCommentAction, setStatusAction } from "../issues";
+import {
+  createIssueAction,
+  addCommentAction,
+  setStatusAction,
+} from "../issues";
 import { createIssue, addComment, setIssueStatus } from "@/lib/issuesRepo";
 import { revalidatePath } from "next/cache";
 

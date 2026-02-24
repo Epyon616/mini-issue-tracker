@@ -8,7 +8,10 @@ export default function CommentComposer({ issueId }: { issueId: string }) {
   const [body, setBody] = useState("");
   const [error, setError] = useState<string | null>(null);
 
-  const canSubmit = useMemo(() => body.trim().length > 0 && !isPending, [body, isPending]);
+  const canSubmit = useMemo(
+    () => body.trim().length > 0 && !isPending,
+    [body, isPending],
+  );
 
   function submit() {
     setError(null);
@@ -42,7 +45,12 @@ export default function CommentComposer({ issueId }: { issueId: string }) {
       </div>
 
       <div className="row" style={{ justifyContent: "space-between" }}>
-        <button className="btn primary" disabled={!canSubmit} onClick={submit} type="button">
+        <button
+          className="btn primary"
+          disabled={!canSubmit}
+          onClick={submit}
+          type="button"
+        >
           {isPending ? "Posting…" : "Post comment"}
         </button>
         <span className="subtle">Optimistic: clears input immediately</span>

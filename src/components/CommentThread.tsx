@@ -14,7 +14,9 @@ export default async function CommentThread({ issueId }: { issueId: string }) {
           <div className="meta" style={{ marginTop: 0, marginBottom: 8 }}>
             <span>{new Date(c.createdAt).toLocaleString()}</span>
           </div>
-          <div style={{ whiteSpace: "pre-wrap", lineHeight: 1.5 }}>{c.body}</div>
+          <div style={{ whiteSpace: "pre-wrap", lineHeight: 1.5 }}>
+            {c.body}
+          </div>
         </div>
       ))}
     </div>

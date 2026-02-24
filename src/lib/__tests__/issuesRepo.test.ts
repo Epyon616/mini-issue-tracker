@@ -21,7 +21,7 @@ beforeEach(async () => {
   await fs.writeFile(
     TEST_DB_PATH,
     JSON.stringify({ issues: [], comments: [] }),
-    "utf-8"
+    "utf-8",
   );
 });
 
@@ -86,7 +86,10 @@ describe("issuesRepo", () => {
 
     it("should filter by status", async () => {
       await createIssue({ title: "Open", body: "Open issue" });
-      const issue2 = await createIssue({ title: "Closed", body: "Closed issue" });
+      const issue2 = await createIssue({
+        title: "Closed",
+        body: "Closed issue",
+      });
       await setIssueStatus(issue2.id, "CLOSED");
 
       const openIssues = await listIssues({ status: "OPEN" });
@@ -185,7 +188,7 @@ describe("issuesRepo", () => {
 
     it("should throw error for non-existent issue", async () => {
       await expect(setIssueStatus("non-existent", "CLOSED")).rejects.toThrow(
-        "Issue not found"
+        "Issue not found",
       );
     });
   });
@@ -217,7 +220,7 @@ describe("issuesRepo", () => {
 
     it("should throw error for non-existent issue", async () => {
       await expect(addComment("non-existent", "Comment")).rejects.toThrow(
-        "Issue not found"
+        "Issue not found",
       );
     });
   });

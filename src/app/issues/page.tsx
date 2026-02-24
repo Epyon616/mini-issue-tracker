@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { listIssues } from "@/lib/issuesRepo";
 
-type SearchParamsProps = {searchParams: Promise<{ status?: string; q?: string }> };
+type SearchParamsProps = {
+  searchParams: Promise<{ status?: string; q?: string }>;
+};
 
 export default async function IssuesPage({ searchParams }: SearchParamsProps) {
-  const { status, q } = await searchParams; 
+  const { status, q } = await searchParams;
   const searchStatus =
     status === "OPEN" || status === "CLOSED"
       ? (status as "OPEN" | "CLOSED")
@@ -32,7 +34,12 @@ export default async function IssuesPage({ searchParams }: SearchParamsProps) {
       <section className="panel stack">
         {/* URL-state filters (no useState) */}
         <form method="GET" className="row" style={{ gap: 10 }}>
-          <select className="select" name="status" defaultValue={statusValue} style={{ maxWidth: 180 }}>
+          <select
+            className="select"
+            name="status"
+            defaultValue={statusValue}
+            style={{ maxWidth: 180 }}
+          >
             <option value="">All</option>
             <option value="OPEN">Open</option>
             <option value="CLOSED">Closed</option>
@@ -60,7 +67,9 @@ export default async function IssuesPage({ searchParams }: SearchParamsProps) {
           <Link key={issue.id} href={`/issues/${issue.id}`} className="card">
             <div className="row" style={{ justifyContent: "space-between" }}>
               <h3 className="title">{issue.title}</h3>
-              <span className={`badge ${issue.status === "OPEN" ? "open" : "closed"}`}>
+              <span
+                className={`badge ${issue.status === "OPEN" ? "open" : "closed"}`}
+              >
                 {issue.status}
               </span>
             </div>
@@ -73,7 +82,9 @@ export default async function IssuesPage({ searchParams }: SearchParamsProps) {
 
         {issues.length === 0 && (
           <div className="panel">
-            <div className="subtle">No issues found for the current filters.</div>
+            <div className="subtle">
+              No issues found for the current filters.
+            </div>
           </div>
         )}
       </section>
