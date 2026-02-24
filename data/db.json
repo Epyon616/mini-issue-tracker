@@ -1,0 +1,34 @@
+{
+  "issues": [
+    {
+      "id": "VlZNdXy90jyZ0QPVa5LH2",
+      "title": "Login button does nothing on Safari",
+      "body": "Users report clicking “Log in” doesn’t trigger the auth flow on Safari 17.",
+      "status": "OPEN",
+      "createdAt": "2026-02-24T16:38:07.230Z",
+      "updatedAt": "2026-02-24T16:38:07.232Z"
+    },
+    {
+      "id": "FTDipjsKSWs0f029M1iT2",
+      "title": "Close issue action sometimes shows stale status",
+      "body": "After closing an issue, detail updates but list page looks stale until refresh.",
+      "status": "CLOSED",
+      "createdAt": "2026-02-24T16:38:07.232Z",
+      "updatedAt": "2026-02-24T16:38:07.233Z"
+    }
+  ],
+  "comments": [
+    {
+      "id": "3XsuwxHc4Y9h7V-NPq_gU",
+      "issueId": "VlZNdXy90jyZ0QPVa5LH2",
+      "body": "I can reproduce on Safari 17.3.",
+      "createdAt": "2026-02-24T16:38:07.231Z"
+    },
+    {
+      "id": "WUWZNqoO7Q3air_bxDlUp",
+      "issueId": "VlZNdXy90jyZ0QPVa5LH2",
+      "body": "Likely related to a form submit handler.",
+      "createdAt": "2026-02-24T16:38:07.232Z"
+    }
+  ]
+}
