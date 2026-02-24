@@ -15,6 +15,30 @@
       "status": "CLOSED",
       "createdAt": "2026-02-24T16:38:07.232Z",
       "updatedAt": "2026-02-24T16:38:07.233Z"
+    },
+    {
+      "id": "t8nw9LE2GsLIcRRWW9NW3",
+      "title": "Login button does nothing on Safari",
+      "body": "Users report clicking “Log in” doesn’t trigger the auth flow on Safari 17.",
+      "status": "OPEN",
+      "createdAt": "2026-02-24T17:15:35.582Z",
+      "updatedAt": "2026-02-24T17:15:35.586Z"
+    },
+    {
+      "id": "Xa_2aSaFDlA8qJqugmduM",
+      "title": "Close issue action sometimes shows stale status",
+      "body": "After closing an issue, detail updates but list page looks stale until refresh.",
+      "status": "CLOSED",
+      "createdAt": "2026-02-24T17:15:35.586Z",
+      "updatedAt": "2026-02-24T17:15:35.587Z"
+    },
+    {
+      "id": "UIZij9Q6G4gpe42365jHH",
+      "title": "fdafdaf",
+      "body": "fdafdafdaf",
+      "status": "OPEN",
+      "createdAt": "2026-02-24T18:02:32.731Z",
+      "updatedAt": "2026-02-24T18:02:32.731Z"
     }
   ],
   "comments": [
@@ -29,6 +53,18 @@
       "issueId": "VlZNdXy90jyZ0QPVa5LH2",
       "body": "Likely related to a form submit handler.",
       "createdAt": "2026-02-24T16:38:07.232Z"
+    },
+    {
+      "id": "jJP9tutlAlqq3wXJmq4_g",
+      "issueId": "t8nw9LE2GsLIcRRWW9NW3",
+      "body": "I can reproduce on Safari 17.3.",
+      "createdAt": "2026-02-24T17:15:35.586Z"
+    },
+    {
+      "id": "-T_XdJzohSA12LqnT-AmX",
+      "issueId": "t8nw9LE2GsLIcRRWW9NW3",
+      "body": "Likely related to a form submit handler.",
+      "createdAt": "2026-02-24T17:15:35.586Z"
     }
   ]
 }
